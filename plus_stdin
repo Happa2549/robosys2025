@@ -13,9 +13,11 @@ print(ans)
 
 import sys
 
-ans = 0.0
+ans = 0
 for line in sys.stdin:
-    ans += float(line)
-
+    try: 
+        ans += int(line)
+    except:
+        ans += float(line)
 print(ans)
 >>>>>>> 9dfacee (add a command)
