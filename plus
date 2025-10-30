@@ -1,16 +1,10 @@
 #!/home/shun/anaconda3/bin/python3
+#SPDX-FileCopyrightText: 2025 Morito Shunsuke
 
 import sys
 
+ans = 0.0
+for line in sys.stdin:
+    ans += float(line)
 
-def tonum(s):
-    try:
-        return int(s)
-    except:
-        return float(s)
-
-
-ans = 0
-for line in sys.stdin: 
-        ans += tonum(line)
 print(ans)
