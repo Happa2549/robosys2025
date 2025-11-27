@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 #SPDX-FileCopyrightText: 2025 Morito Shunsuke
-#ここにライセンスと著作権について書く
+#ここにライセンスと著作権について書ク
 
+import fitz
 import csv
 import os
 import pdfplumber
@@ -23,6 +24,11 @@ if ext1 == ".txt":
     text = ""
     for page in reader.pages:
         text += page.extract_text() + "\n"
+
+    with open(output_file1, "w", encoding="utf-8") as f:
+            f.write(text)
+
+
 elif ext1 == ".csv":
     all_rows = []
 
@@ -33,16 +39,24 @@ elif ext1 == ".csv":
                     row_clean = [cell if cell is not None else "" for cell in row]
                     row_clean = [str(cell).replace("\n", " ").strip() for cell in row_clean]
                     all_rows.append(row_clean)
-elif ext1 == ".jpg"
 
-
-
-if ext1 == ".txt":
-    with open(output_file1, "w", encoding="utf-8") as f:
-        f.write(text)
-elif ext1 == ".csv":
     with open(output_file1, "w", newline="", encoding= "utf-8-sig") as f:
-        writer = csv.writer(f)
-        for row in all_rows:
-            writer.writerow(row)
-elif ext1 == ".jpg""utf-8-sig"
+                        writer = csv.writer(f)
+                        writer.writerow(row)
+
+
+elif ext1 == ".jpg":
+    os.makedirs(output_file1, exist_ok=True)
+
+    doc = fitz.open(input_pdf)
+
+    for page_num, page in enumerate(doc, start=1):
+        images = page.get_images(full=True)
+        for img_index, img in enumerate(images, start=1):
+            xref = img[0]
+            base_image = doc.extract_image(xref)
+            image_bytes = base_image["image"]
+            image_ext = base_image["ext"]
+            image_filename = f"{output_file1}/page{page_num}_img{img_index}.{image_ext}"
+            with open(image_filename, "wb") as f:
+                f.write(image_bytes)
