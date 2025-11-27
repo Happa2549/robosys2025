@@ -2,23 +2,47 @@
 #SPDX-FileCopyrightText: 2025 Morito Shunsuke
 #ここにライセンスと著作権について書く
 
-
-
+import csv
+import os
+import pdfplumber
 import sys
 from PyPDF2 import PdfReader
 
 
 input_pdf = sys.argv[1]
-output_txt = sys.argv[2]
+output_file1 = sys.argv[2]
+
+
+filename = output_file1
+name, ext1 = os.path.splitext(filename)
+ext1 = ext1.lower()
+
+
+if ext1 == ".txt":
+    reader = PdfReader(input_pdf)
+    text = ""
+    for page in reader.pages:
+        text += page.extract_text() + "\n"
+elif ext1 == ".csv":
+    all_rows = []
+
+    with pdfplumber.open(input_pdf) as pdf:
+        for page in pdf.pages:
+            for table in page.extract_tables() or []:
+                for row in table:
+                    row_clean = [cell if cell is not None else "" for cell in row]
+                    row_clean = [str(cell).replace("\n", " ").strip() for cell in row_clean]
+                    all_rows.append(row_clean)
+elif ext1 == ".jpg"
 
 
 
-reader = PdfReader(input_pdf)
-text = ""
-for page in reader.pages:
-    text += page.extract_text() + "\n"
-
-
-with open(output_txt, "w", encoding="utf-8") as f:
-    f.write(text)
-
+if ext1 == ".txt":
+    with open(output_file1, "w", encoding="utf-8") as f:
+        f.write(text)
+elif ext1 == ".csv":
+    with open(output_file1, "w", newline="", encoding= "utf-8-sig") as f:
+        writer = csv.writer(f)
+        for row in all_rows:
+            writer.writerow(row)
+elif ext1 == ".jpg""utf-8-sig"
