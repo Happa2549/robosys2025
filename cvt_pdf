@@ -17,3 +17,4 @@ input_pdf = sys.stdin.readline().strip()
 
 if not check(input_pdf):
     sys.exit(1)
+
