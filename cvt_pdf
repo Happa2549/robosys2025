@@ -11,9 +11,9 @@ def check(filename):
         return False
     return True
 
-print(file=sys.stderr)
+
 
 input_pdf = sys.stdin.readline().strip()
 
-if not check_pdf(input_pdf):
+if not check(input_pdf):
     sys.exit(1)
