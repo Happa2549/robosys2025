@@ -1,17 +1,25 @@
 #!/bin/bash 
 #SPDX-FileCopyrightText: 2025 Morito Shunsuke
 
-
-ng () {
-	echo ${1}行目が違うよ
-	res=1
+ng() {
+    echo No.${1} is failed
+    res=1
 }
 
 res=0
-
-out=$(seq 5 | python3 ./plus)
-[ "${out}" = 15.0 ] || ng "$LINENO"
+input_pdf="a.pdf"
 
 
-[ "${res}" = 0 ] && echo ok
+if [[ ! -f "$input_pdf" ]]; then
+    ng "$LINENO"
+fi
+
+
+echo "$input_pdf" | python3 cvt_pdf
+if [[ $? -ne 0 ]]; then
+    ng "$LINENO"
+fi
+
+[ "$res" = 0 ] && echo OK
 exit $res
+
