@@ -40,7 +40,8 @@ chmod +x test.bash
 
 - 次に以下を入力する。
   ```
-  echo sanple.pdf | ./cvt_pdf
+  ＄echo sanple.pdf | ./cvt_pdf
+  sanple
   ```
 - 標準出力としてpdf内のテキストが出力される。
 
