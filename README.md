@@ -17,23 +17,23 @@ Ubuntu 系の場合、以下を実行してください：
 ```bash
 sudo apt update
 sudo apt install -y python3 python3-pip
-## 使用確認済み Python バージョン： 3.10 / 3.11
+#使用確認済み Python バージョン： 3.10 / 3.11
 
     
   
-## 次にモジュールのインストール  
+#次にモジュールのインストール  
   　　pip install --upgrade pip  
   　　pip install PyPDF2 pdfplumber  
-## これらをインストールしてPDF内のテキスト抽出に使います。  
+#これらをインストールしてPDF内のテキスト抽出に使います。  
 
-## 最後に実行権限の付与  
+#最後に実行権限の付与  
     　chmod +x cvt_pdf  
     　chmod +x test.bash
-## これらを入力することで ./cvt_pdfなどのように使用できます。  
+#これらを入力することで ./cvt_pdfなどのように使用できます。  
 
-## 上記三項目が終わり次第、./test.bashと入力してください。  
-    すべて正常に動作している場合、okと表示されます。もし表示されず、No.n is failed
-    と表示された場合、test.bashのそのｎ行でエラーが起こっているのでご注意ください。
+#上記三項目が終わり次第、./test.bashと入力してください。  
+ すべて正常に動作している場合、okと表示されます。もし表示されず、No.n is failed
+ と表示された場合、test.bashのそのｎ行でエラーが起こっているのでご注意ください。
 
     
 
