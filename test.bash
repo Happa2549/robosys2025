@@ -8,11 +8,16 @@ ng() {
 
 res=0
 
-
-out=$(echo "txt.pdf" | python3 cvt_pdf)
+#正常なサンプルPDFを入力するテスト
+out=$(echo "txt.pdf" | ./cvt_pdf)
 [ $? = 0 ] || ng "$LINENO"
 [ "$out" = "test " ] || ng "$LINENO"
 
+
+#拡張子はあってるが存在しないファイルを入力するテスト
+out=$(echo "aaa.pdf" | ./cvt_pdf)
+[ $? != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
 
 [ "${res}" = 0 ] && echo ok #for human
 exit $res
