@@ -4,8 +4,8 @@
 - これはPDF内のテキストをターミナル上に出力するソフトウェアです。
 - 準備
 　- まずはpythonのダウンロード　　
-　　　sudo apt update　　
-　　　sudo apt install -y python3 python3-pip　　
+　　　sudo apt update  
+　　　sudo apt install -y python3 python3-pip  
   　これらをダウンロードして今回作成したソフトウェアの環境と合わせます。　　
   
   - 次にモジュールのインストール　　
