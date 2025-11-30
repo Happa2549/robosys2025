@@ -1,4 +1,4 @@
-# Convert PDF Text# Convert PDF Text
+# Convert PDF Text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 PDF 内のテキストをターミナルに出力するためのソフトウェアです。
