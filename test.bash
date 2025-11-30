@@ -25,8 +25,10 @@ out=$(echo "aaa.pdf" | ./cvt_pdf)
 [ $? != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
-
-
+#PDF内の画像から文字を読むかのテスト
+out=$(echo "pict.pdf" | ./cvt_pdf)
+[ $? = 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
 
 [ "${res}" = 0 ] && echo ok #for human
 exit $res
