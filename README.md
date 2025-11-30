@@ -6,11 +6,13 @@
 　https://github.com/Happa2549/robosys2025.git
 
 
-  #準備  
+  # 準備  
 　- まずはpythonのダウンロード  
 　　　sudo apt update  
 　　　sudo apt install -y python3 python3-pip  
   　これらをダウンロードして今回作成したソフトウェアの環境と合わせます。  
+    テスト済みのバージョン: 3.10，3.11
+    
   
   - 次にモジュールのインストール  
   　　pip install --upgrade pip  
