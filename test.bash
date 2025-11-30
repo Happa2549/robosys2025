@@ -1,5 +1,5 @@
 #!/bin/bash -xv
-#PDX-FileCopyrightText: 2025 Morito Shunsuke
+# SPDX-FileCopyrightText: 2025 Morito Shunsuke
 
 ng() {
     echo No.${1} is failed
