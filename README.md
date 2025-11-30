@@ -1,18 +1,24 @@
-# Convert PDF Text
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+# Convert PDF Text# Convert PDF Text
+━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-- これはPDF内のテキストをターミナル上に出力するソフトウェアです。
+PDF 内のテキストをターミナルに出力するためのソフトウェアです。
 
-　https://github.com/Happa2549/robosys2025.git
+🔗 **Repository:**  
+https://github.com/Happa2549/robosys2025
 
+---
 
-  # 準備  
-  
-　- まずはpythonのダウンロード  
-　　　sudo apt update  
-　　　sudo apt install -y python3 python3-pip  
-  　これらをダウンロードして今回作成したソフトウェアの環境と合わせます。  
-    テスト済みのバージョン: 3.10，3.11
+## 📦 準備
+
+### 1. Python のインストール
+
+Ubuntu 系の場合、以下を実行してください：
+
+```bash
+sudo apt update
+sudo apt install -y python3 python3-pip
+使用確認済み Python バージョン： 3.10 / 3.11
+
     
   
   - 次にモジュールのインストール  
