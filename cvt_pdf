@@ -6,15 +6,16 @@ import sys
 from PyPDF2 import PdfReader
 
 
-def check(filename):
-    if not filename.lower().endswith(".pdf"):
-        return False
-    return True
-
-
-
 input_pdf = sys.stdin.readline().strip()
 
-if not check(input_pdf):
+
+try:
+    reader = PdfReader(input_pdf)
+except FileNotFoundError:
     sys.exit(1)
+
+for page in reader.pages:
+    text = page.extract_text()
+    if text:
+        print(text)
 
