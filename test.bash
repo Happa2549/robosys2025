@@ -19,6 +19,15 @@ out=$(echo "aaa.pdf" | ./cvt_pdf)
 [ $? != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
+
+#PDFでもなければ存在もしないファイルを入力するテスト
+out=$(echo "aaa.pdf" | ./cvt_pdf)
+[ $? != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
+
+
+
+
 [ "${res}" = 0 ] && echo ok #for human
 exit $res
 
