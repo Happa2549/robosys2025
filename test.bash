@@ -9,7 +9,7 @@ ng() {
 res=0
 
 
-out=$(echo "a.pdf" | python3 cvt_pdf)
+out=$(echo "a.PDF" | python3 cvt_pdf)
 if [[ $? -ne 0 ]]; then
     ng "$LINENO"
 fi
