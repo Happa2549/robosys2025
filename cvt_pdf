@@ -1,22 +1,13 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2025 Morito Shunsuke
-
+# SPDX-License-Identifier: GPL-3.0-only
 
 import sys
 from PyPDF2 import PdfReader
 
 
-def check(filename): #テスト用関数
-    if not filename.lower().endswith(".pdf"):
-        return False
-    return True
-
-
-
 input_pdf = sys.stdin.readline().strip()
 
-if not check(input_pdf):
-    sys.exit(1)
 
 try:
     reader = PdfReader(input_pdf)
