@@ -3,7 +3,7 @@
 
 - これはPDF内のテキストをターミナル上に出力するソフトウェアです。
 
-
+　https://github.com/Happa2549/robosys2025.git
 
 
   #準備  
