@@ -32,8 +32,10 @@ chmod +x test.bash
 
  ### 2. 対応環境
  - Ubuntu 22.04 / 20.04
- - ※　本環境では release-upgrades が無効化されており、
-　　　　Ubuntu のメジャーバージョンアップは実施できなかった。
+ - ※ 本環境では release-upgrades が無効化されており、
+ -    Ubuntu のメジャーバージョンアップは実施できなかったため
+ -    本バージョン以降の動作は保証できないです｡
+ -    
  - Python 3.10, 3.11
 
 
@@ -47,7 +49,7 @@ chmod +x test.bash
 - 次に以下を入力する。
  ``` 
 　## 使用例
-　$ echo sample.pdf | ./cvt_pdf
+　$ cat sample.pdf | ./cvt_pdf
 　これはPDFのテキストです。
  ```
   
