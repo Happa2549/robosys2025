@@ -32,6 +32,8 @@ chmod +x test.bash
 
  ### 2. 対応環境
  - Ubuntu 22.04 / 20.04
+ - ※　本環境では release-upgrades が無効化されており、
+　　　　Ubuntu のメジャーバージョンアップは実施できなかった。
  - Python 3.10, 3.11
 
 
