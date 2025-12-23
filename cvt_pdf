@@ -3,19 +3,52 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 import sys
+from io import BytesIO
 from PyPDF2 import PdfReader
 
 
-input_pdf = sys.stdin.readline().strip()
-
-
 try:
-    reader = PdfReader(input_pdf)
+    data = sys.stdin.buffer.read()
+    if not data:
+        sys.exit(1)
+        
+
+    sep = b"\n-\n"
+    #echoで呼べば勝手に\nがつくからこの形にするべき
+    if sep in data:
+        command_part, pdf_data = data.split(sep, 1)
+        command = command_part.decode("utf-8").strip()
+    else:
+        command = None
+        pdf_data = data
+
+    reader = PdfReader(BytesIO(pdf_data))
+    #疑似ファイル
+
+    # 全文表示パート
+    if not command:
+        for i, page in enumerate(reader.pages, start=1):
+            text = page.extract_text()
+            if text:
+                print(f"[Page {i}]")
+                print(text)
+                print()
+
+    # ページ指定パート
+    elif command.isdigit():
+        page = int(command)
+        if 1 <= page <= len(reader.pages):
+            text = reader.pages[page - 1].extract_text()
+            if text:
+                print(text)
+
+    # 検索パート
+    else:
+        for i, page in enumerate(reader.pages, start=1):
+            text = page.extract_text()
+            if text and command in text:
+                print(i)
+
 except FileNotFoundError:
     sys.exit(1)
-
-for page in reader.pages:
-    text = page.extract_text()
-    if text:
-        print(text)
 
