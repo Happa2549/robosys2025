@@ -38,13 +38,37 @@ out=$(
 [ $? = 0 ] || ng "$LINENO"
 [ -n "$out" ] || ng "$LINENO"
 
-# stdinを勧善に空にする
+# stdinを完全に空にする
 out=$(echo -n "" | ./cvt_pdf)
 [ $? != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
+#検索元がpdfではない
+out=$(
+    (echo test; echo "-"; echo hello) | ./cvt_pdf
+)
+[ $? != 0 ] || ng "$LINENO"
+[ -n "$out" ] || ng "$LINENO"
+
 #ただの文字列を渡す
 out=$(echo "hello" | ./cvt_pdf)
+[ $? != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
+
+#パイプ元が失敗
+out=$(false | ./cvt_pdf)
+[ $? != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
+
+#%%EOFを読ませない
+out=$(head -c 20 txt.pdf | ./cvt_pdf)
+[ $? != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
+
+#UTF-8で解釈不能にする
+out=$(
+    printf "\xff\xff\n-\n" | cat - txt.pdf | ./cvt_pdf
+)
 [ $? != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
