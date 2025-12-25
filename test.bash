@@ -26,3 +26,15 @@ out=$(cat aaa.pdf | ./cvt_pdf)
 [ $? != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
+# 画像のみPDF（テキスト抽出不可）
+out=$(cat pict.pdf | ./cvt_pdf)
+[ $? = 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
+
+# 検索テスト
+out=$(
+    (echo test; echo "-"; cat txt.pdf) | ./cvt_pdf
+)
+[ $? = 0 ] || ng "$LINENO"
+[ -n "$out" ] || ng "$LINENO"
+
