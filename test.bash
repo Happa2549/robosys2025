@@ -43,6 +43,11 @@ out=$(echo -n "" | ./cvt_pdf)
 [ $? != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
+#ただの文字列を渡す
+out=$(echo "hello" | ./cvt_pdf)
+[ $? != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
+
 [ "$res" = 0 ] && echo ok
 exit $res
 
