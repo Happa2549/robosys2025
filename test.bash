@@ -14,3 +14,11 @@ out=$(cat txt.pdf | ./cvt_pdf)
 [ $? = 0 ] || ng "$LINENO"
 [ -n "$out" ] || ng "$LINENO"
 
+# 1ページ目指定
+out=$(
+    (echo 1; echo "-"; cat txt.pdf) | ./cvt_pdf
+)
+[ $? = 0 ] || ng "$LINENO"
+[ -n "$out" ] || ng "$LINENO"
+
+
