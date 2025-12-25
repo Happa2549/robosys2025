@@ -43,37 +43,43 @@ out=$(echo -n "" | ./cvt_pdf)
 [ $? != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
-#検索元がpdfではない
+# 検索元が pdf ではない
 out=$(
     (echo test; echo "-"; echo hello) | ./cvt_pdf
 )
-[ $? != 0 ] || ng "$LINENO"
-[ -n "$out" ] || ng "$LINENO"
+status=$?
+[ "$status" != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
 
-#ただの文字列を渡す
+# ただの文字列を渡す
 out=$(echo "hello" | ./cvt_pdf)
-[ $? != 0 ] || ng "$LINENO"
+status=$?
+[ "$status" != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
-#パイプ元が失敗
+# パイプ元が失敗
 out=$(false | ./cvt_pdf)
-[ $? != 0 ] || ng "$LINENO"
+status=$?
+[ "$status" != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
-#%%EOFを読ませない
+# %%EOF を読ませない（壊れたPDF）
 out=$(head -c 20 txt.pdf | ./cvt_pdf)
-[ $? != 0 ] || ng "$LINENO"
+status=$?
+[ "$status" != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
-#UTF-8で解釈不能にする
+# UTF-8で解釈不能なコマンド部
 out=$(
     printf "\xff\xff\n-\n" | cat - txt.pdf | ./cvt_pdf
 )
-[ $? != 0 ] || ng "$LINENO"
+status=$?
+[ "$status" != 0 ] || ng "$LINENO"
 [ "$out" = "" ] || ng "$LINENO"
 
 [ "$res" = 0 ] && echo ok
 exit $res
+
 
 
 
