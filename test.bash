@@ -38,3 +38,13 @@ out=$(
 [ $? = 0 ] || ng "$LINENO"
 [ -n "$out" ] || ng "$LINENO"
 
+# stdinを勧善に空にする
+out=$(echo -n "" | ./cvt_pdf)
+[ $? != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
+
+[ "$res" = 0 ] && echo ok
+exit $res
+
+
+
