@@ -38,7 +38,7 @@ chmod +x test.bash
  - Ubuntu 22.04 / 20.04
  - Python 3.10, 3.11　(動作確認済み)
 
- - ※ 本環境では release-upgrades が無効化されており、
+   ※ 本環境では release-upgrades が無効化されており、
       Ubuntu のメジャーバージョンアップは実施できなかったため
       本バージョン以降の動作は保証していません｡
 
