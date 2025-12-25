@@ -76,8 +76,8 @@ chmod +x test.bash
 　## 使用例
 　$ (echo test; echo "-"; cat sample.pdf) | ./cvt_pdf
 　1
-  2
-  5
+　2
+　5
  ```
 - 検索したワードを含むページ番号のみを出力します。
 
