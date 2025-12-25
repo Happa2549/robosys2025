@@ -21,4 +21,8 @@ out=$(
 [ $? = 0 ] || ng "$LINENO"
 [ -n "$out" ] || ng "$LINENO"
 
+# 存在しないPDF
+out=$(cat aaa.pdf | ./cvt_pdf)
+[ $? != 0 ] || ng "$LINENO"
+[ "$out" = "" ] || ng "$LINENO"
 
